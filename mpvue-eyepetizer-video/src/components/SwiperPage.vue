@@ -17,36 +17,33 @@
   import VideoList from "@/components/VideoList";
   import fly from "@/utils/fly";
   export default {
+		props: {
+			slideList:Array
+		},
     components: {
 		// VideoItem
 		VideoList
     },
     data() {
       return {
-		slideList: [],
-		index: 0
+				// slideList: [],
+				index: 0
       }
 	},
 	methods: {
 		switchTab($e){
 			console.log($e);
-			// this.index=index;
-			// Bus.$emit("change",index);
-			// console.log(index);
+			this.index=$e.target.current;
+			wx.setStorageSync("currentPage",this.index);
+			wx.setStorageSync("currentCart",Object.keys(this.slideList[this.index])[0]);
+			Bus.$emit("change",this.index);
+			console.log(this.index);
 		},
 		switchNav($e){
 			console.log($e);
 		}
 	},
-	created(){
-		// console.log(this.slideList);
-		fly.get("videodata#!method=get").then(res=>{
-			this.slideList=res.data.data.slideList;
-			console.log(this.slideList);
-		}).catch(e=>{
-			console.log(e);
-		})
-	},
+	
 	mounted(){
 		const that=this;
 		Bus.$on("click",(index)=>{

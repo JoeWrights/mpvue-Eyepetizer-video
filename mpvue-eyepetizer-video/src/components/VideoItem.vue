@@ -2,7 +2,7 @@
   <div class="cards">
     <div class="card" hover-class="hover" v-for="(item,index) in videoItem" :key="index">
       <!-- <video :src="item.playUrl" poster="item.feed" :objectFit="cover" :duration="item.duration_raw" /> -->
-      <image :src="item.feed" mode="aspectFill">
+      <image :src="item.feed" mode="aspectFill" :data-id="item.id" @click="showDetail(item.id)">
 				<div class="label">{{item.duration}}</div>
 			</image>
 			<div class="top-list">
@@ -20,7 +20,6 @@
 					<comment />
 					<video-share />
 				</div>
-				
 			</div>
 			<div class="description">{{item.description}}</div>
     </div>
@@ -45,7 +44,15 @@ export default {
   created() {
     // console.log(this.videoItem);
     console.log(this.videoItem);
-  }
+	},
+	methods: {
+		showDetail(id){
+			// console.log(id);
+			wx.navigateTo({
+				url: `../videoDetail/main?id=${id}`
+			})
+		}
+	}
 };
 </script>
 
@@ -59,8 +66,6 @@ export default {
 			padding 20rpx
 			transition 0.5s all
 			border-bottom 1px solid #dcdcdc
-			&.hover
-				box-shadow: 0 70rpx 90rpx rgba(0, 0, 0, 0.06)
 			image
 				width 100%
 				height 38vh

@@ -12,8 +12,8 @@ export default {
 
 <style lang="stylus" scoped>
   .video-share
-    width 40rpx
-    height 40rpx
+    width 44rpx
+    height 44rpx
     image
       width 100%
       height 100%

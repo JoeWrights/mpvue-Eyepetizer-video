@@ -12,13 +12,16 @@
 <script>
 import Bus from "@/assets/eventBus";
 export default {
+    props: {
+        navItem: Array
+    },
     data(){
         return {
             scrollLeft: 0,
             currNav: 0,
             tabItem: "tab-item",
-            activeClass: "active",
-            navItem:["精选","广告","生活","动画","搞笑","开胃","创意","运动","音乐","萌宠"]
+            activeClass: "active"
+            
         }
     },
     methods: {
@@ -74,5 +77,6 @@ export default {
                     background #000
                     position absolute
                     bottom 25rpx
-                    left 30rpx
+                    left 32rpx
+                    transition all 2s
 </style>

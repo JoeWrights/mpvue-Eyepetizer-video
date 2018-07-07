@@ -22,10 +22,10 @@ export default {
 
 <style lang="stylus" scoped>
 	.video-collect
-		width 40rpx
-		height 40rpx
+		width 44rpx
+		height 44rpx
 		image
-			width 40rpx
-			height 40rpx
+			width 44rpx
+			height 44rpx
 			display inline-block
 </style>
