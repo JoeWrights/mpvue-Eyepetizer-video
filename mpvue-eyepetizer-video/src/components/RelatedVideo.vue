@@ -1,5 +1,5 @@
 <template>
-  <div class="related-item">
+  <div class="related-item" :data-id="relatedVideo.id" @click="showDetail">
     <div class="video-cover">
       <image :src="relatedVideo.feed"/>
     </div>
@@ -14,6 +14,15 @@
   export default {
     props: {
       relatedVideo: Object
+    },
+    methods: {
+      showDetail(e){
+        const id=e.currentTarget.dataset.id;
+        console.log(id);
+        wx.navigateTo({
+          url: `../videoDetail/main?id=${id}`
+        })
+      }
     }
   }
 
@@ -24,14 +33,22 @@
     width 100%
     display flex
     flex-direction row
-    justify-content space-between
+    justify-content space-around
     align-items center
+    padding 30rpx 0
+    border-bottom 1rpx solid #cdcdcd
     .video-cover
       width 300rpx
       height 15vh
+      border-radius 4rpx
       image 
         width 100%
         height 100%
     .video-desc
       width 320rpx
+      font-size 11pt
+      line-height 50rpx
+      color #fff
+      .video-desc__meta
+        font-size 10pt
 </style>

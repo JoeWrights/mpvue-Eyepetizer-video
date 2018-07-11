@@ -8,13 +8,15 @@
 			<video-list :videoList="items"/>
 		</scroll-view>
     </swiper-item>
+		<div v-if="showLoading"><loading /></div>
   </swiper>
 </template>
 
 <script>
   import Bus from "@/assets/eventBus";
 //   import VideoItem from "@/components/VideoItem";
-  import VideoList from "@/components/VideoList";
+	import VideoList from "@/components/VideoList";
+	import Loading from "@/components/Loading";
   import fly from "@/utils/fly";
   export default {
 		props: {
@@ -22,12 +24,14 @@
 		},
     components: {
 		// VideoItem
-		VideoList
+			VideoList,
+			Loading
     },
     data() {
       return {
 				// slideList: [],
-				index: 0
+				index: 0,
+				showLoading: false
       }
 	},
 	methods: {

@@ -1,12 +1,21 @@
 <template>
-  <div class="comment">
+  <div class="comment" @click="clickComment">
     <image src="../../static/icons/comment.png"/>
   </div>
 </template>
 
 <script>
 export default {
-
+  data(){
+    return {
+      showComment: true
+    }
+  },
+  methods: {
+    clickComment(){
+      this.$emit("showComments",this.showComment);
+    }
+  }
 };
 </script>
 
